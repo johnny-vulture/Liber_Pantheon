@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Assessment List{% endblock %}
+
+{% block content %}
+<div class="bg-white p-8 rounded shadow-md">
+  <h1 class="text-2xl font-semibold mb-4">Assessment List</h1>
+  <ul class="list-disc ml-6">
+    {% for assessment in assessments %}
+    <li class="mb-2">{{ assessment.name }} - {{ assessment.unique_code }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
