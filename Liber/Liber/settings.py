@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'assessment',
     'module',
-    'api',
+    'website',
 ]
 
 MIDDLEWARE = [

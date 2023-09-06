@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'assessment'
+
 urlpatterns = [
     path('', views.UploadView.as_view(), name='upload'),
 
@@ -12,4 +14,5 @@ urlpatterns = [
     path('generate_pdf/', views.GeneratePDFView.as_view(), name='generate_pdf'),
     path('generate_pdf_template/', views.GeneratePDFTemplateView.as_view(),
          name='generate_pdf_template'),
+    path('dash/', views.DashboardView.as_view(), name='dashboard'),
 ]

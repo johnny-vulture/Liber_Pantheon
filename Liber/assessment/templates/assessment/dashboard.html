@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="d-flex justify-content-around">
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-header">
+      My Assessments
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <ul class="list-disc ml-6">
+        {% for assessment in assessments %}
+        <li class="mb-2">{{ assessment.name }} - {{ assessment.unique_code }}</li>
+        {% endfor %}
+      </ul>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-header">
+      Modules
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <ul class="list-disc ml-6">
+        {% for module in modules %}
+        <li class="mb-2">{{ module.code }}</li>
+        {% endfor %}
+      </ul>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+  
+</div>
+
+{% else %}  
+<div class="col-md-6 offset-md-3">  
+<h1>Login</h1>
+<br/>
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+   
+        <div class="mb-3">
+          <input type="text" class="form-control" name="username", placeholder="Username" required>
+        </div>
+        <br/>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password", placeholder="Password" required>
+        </div>
+        <br/>
+        <button type="submit" class="btn btn-secondary">Login</button>
+      
+</form>
+</div>
+{% endif %}
+{% endblock %}

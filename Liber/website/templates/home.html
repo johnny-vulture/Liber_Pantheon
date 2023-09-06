@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+    {% if user.is_authenticated %}
+
+    <div class="d-flex justify-content-around">
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a class="nav-link" href="{% url 'assessment:dashboard' %}">Dashboard</a>
+        </div>
+      </div>
+     
+    </div>
+
+    {% else %}  
+    <div class="col-md-6 offset-md-3">  
+    <h1>Login</h1>
+    <br/>
+    <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+       
+            <div class="mb-3">
+              <input type="text" class="form-control" name="username", placeholder="Username" required>
+            </div>
+            <br/>
+            <div class="mb-3">
+              <input type="password" class="form-control" name="password", placeholder="Password" required>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-secondary">Login</button>
+          
+    </form>
+    </div>
+{% endif %}
+{% endblock %}

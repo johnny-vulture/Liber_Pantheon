@@ -6,16 +6,19 @@ from rest_framework.parsers import JSONParser
 from django.shortcuts import redirect
 from django.urls import reverse
 from .models import Assessment, Question, Section
+from module.models import Module
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from io import BytesIO
 from django.http import FileResponse
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
-class UploadView(View): 
-    template_name = 'upload_json.html'
+class UploadView(View):
+    # skip
+    template_name = 'assessment/upload_json.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
@@ -31,7 +34,8 @@ class UploadView(View):
 
 
 class UploadJSONView(View):
-    template_name = 'upload_json.html'
+    # submit json and turn it into an assessment
+    template_name = 'assessment/upload_json.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
@@ -78,7 +82,9 @@ class UploadJSONView(View):
 
 
 class AssessmentListView(View):
-    template_name = 'assessment_list.html'
+    # show list of created assessments
+    # add modules
+    template_name = 'assessment/assessment_list.html'
 
     def get(self, request, *args, **kwargs):
         assessments = Assessment.objects.all()
@@ -87,7 +93,8 @@ class AssessmentListView(View):
 
 
 class CreateAssessmentView(View):
-    template_name = 'upload_form.html'
+    # Feel in form that creates the json
+    template_name = 'assessment/upload_form.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
@@ -123,7 +130,8 @@ class CreateAssessmentView(View):
 
 
 class GeneratePDFTemplateView(View):
-    template_name = 'generate_pdf.html'
+    # returns a pdf version of an assessment
+    template_name = 'assessment/generate_pdf.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
@@ -196,3 +204,13 @@ class GeneratePDFView(View):
             lines.append(" ".join(current_line))
 
         return lines
+
+
+class DashboardView(View):
+    # show list of created assessments
+    template_name = 'assessment/dashboard.html'
+
+    def get(self, request, *args, **kwargs):
+        assessments = Assessment.objects.all()
+        modules = Module.objects.all()
+        return render(request, self.template_name, {'assessments': assessments, 'modules': modules})
