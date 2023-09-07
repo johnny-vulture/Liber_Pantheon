@@ -5,7 +5,7 @@
 {% block content %}
 <div class="bg-white p-8 rounded shadow-md">
   <h1 class="text-2xl font-semibold mb-4">Generate PDF</h1>
-  <form action="{% url 'generate_pdf' %}" method="get" class="space-y-4">
+  <form action="{% url 'assessment:generate_pdf' %}" method="get" class="space-y-4">
     <div class="mb-2">
       <label class="block text-sm font-medium" for="assessment_name">Assessment Name:</label>
       <input

@@ -17,11 +17,11 @@ def home(request):
         if user is not None:
             login(request, user)
             messages.success(request, "You Have Been Logged In!")
-            return redirect('home')
+            return redirect('website:home')
         else:
             messages.success(
                 request, "There was an error logging in, Please try again...")
-            return redirect('home')
+            return redirect('website:home')
     else:
         return render(request, 'home.html', {})
         # return render(request, 'home.html', {'records': records})
@@ -30,7 +30,7 @@ def home(request):
 def logout_user(request):
     logout(request)
     messages.success(request, "You Have Been Logged Out...")
-    return redirect('home')
+    return redirect('website:home')
 
 
 def register_user(request):
@@ -44,7 +44,7 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "You Have Successfully Registered")
-            return redirect('home')
+            return redirect('website:home')
     else:
         form = SignUpForm()
         return render(request, 'register.html', {'form': form})

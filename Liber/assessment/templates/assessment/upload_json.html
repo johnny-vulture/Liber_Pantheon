@@ -9,7 +9,7 @@
     class="space-y-4"
     method="post"
     enctype="multipart/form-data"
-    action="{% url 'upload_json' %}"
+    action="{% url 'assessment:upload_json' %}"
   >
     {% csrf_token %}
     <div>

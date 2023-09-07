@@ -117,13 +117,13 @@
                         </div>
                     </div>
                     <div class="mt-4 justify-between">
-                        <a href="{% url 'assessment:logout' %} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <a href="{% url 'assessment:create_assessment' %}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                             create
                         </a>
-                        <a href="{% url 'assessment:logout' %} class="ml-3 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <a href="{% url 'assessment:upload_json' %}" class="ml-3 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                             upload
                         </a>
-                        <a href="{% url 'assessment:logout' %} class="ml-3 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <a href="{% url 'assessment:generate_pdf_template' %}" class="ml-3 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                             download
                         </a>
                     </div>
@@ -137,7 +137,7 @@
                                 <div class="rounded p-3 bg-blue-600"><i class="fas fa-server fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center pt-5">
-                                <h1 class="font-bold uppercase text-blue-500">Assessments</h1>
+                                <h1 class="font-bold uppercase text-blue-500">Modules</h1>
     
                                 <ul class=" ml-3S">
                                     {% for module in modules %}
